@@ -163,6 +163,30 @@ export const getcountry = (country) => {
   }; ///// retrieve all the universties from the selected country
   
 
+  //////////Postal Code Action Creators////////////////////
+
+export const getpostals = (postaldetals) => {
+  return (dispatch) => {
+    dispatch({ type: "getpostal", payload: postaldetals });
+  };
+};
+export const getpostalcodedetails = (data, search) => {
+  return (dispatch) => {
+    dispatch(postalloading(data));
+    axios
+      .get(`https://api.zippopotam.us/us/${search}`)
+      .then((result) => {
+        dispatch(getpostals(result.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(error2(data));
+      });
+  };
+};
+
+
+
 ///////// loading handlers//////////////////////
 export const loading = (newpost) => {
   return (dispatch) => {
@@ -175,7 +199,15 @@ export const universityloading = (data) => {
     };
   }; /// Async handling for the universty action creator
   
-
+  export const postalloading = (data) => {
+    return (dispatch) => {
+      dispatch({ type: "postalloading", payload: data });
+    };
+  }; /// Async handling for the postalcodesearch
+  
+  
+  
+  
 ///////// Error Handlers //////////////////////
 export const error = (newpost) => {
   return (dispatch) => {
@@ -187,3 +219,12 @@ export const error1 = (newpost) => {
       dispatch({ type: "error1", payload: newpost });
     };
   }; 
+
+
+  export const error2 = (newpost) => {
+    return (dispatch) => {
+      dispatch({ type: "error2", payload: newpost });
+    };
+  }; // Error handling for the postalcodesearch
+  
+  
