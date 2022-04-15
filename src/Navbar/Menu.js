@@ -9,11 +9,6 @@ export const Menu = [
       url: "http://localhost:3000/University",
       className: "nav-links"
     },
-    {
-      title: "Postal Lookup",
-      url: "http://localhost:3000/postal",
-      className: "nav-links"
-    },
   
   ];
   

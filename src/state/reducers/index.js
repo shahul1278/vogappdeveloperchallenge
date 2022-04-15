@@ -1,12 +1,10 @@
 import {combineReducers} from "redux";
-import getpostreducer from "./getpostReducer";
-import getcountryreducer from "./universtiyReducer";
-import searchpostreducer from "./searchpostreducer";
+import postReducer from "./postReducer";
+import universityReducer from "./universityReducer";
 const reducers=combineReducers({
-
-    posts:getpostreducer,
-    country:getcountryreducer,
-    postal:searchpostreducer
-});
+    posts:postReducer,
+    country:universityReducer,
+  
+}); ////Combine Reducers
 
 export default reducers;
